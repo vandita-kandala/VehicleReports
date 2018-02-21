@@ -1,0 +1,213 @@
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<div class="wrapper animated zoomIn">
+  <div class="container-fluid">
+
+<div class="row">
+<div class="col-lg-6">
+  <div class="card-box">
+    <h4 class="m-t-0 m-b-20 header-title"><b>Vehicle Coordinates</b></h4>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+
+</div>
+</div>
+<div class="col-lg-6">
+  <div class="card-box">
+    <h4 class="m-t-0 m-b-20 header-title"><b>Vehicle's Last Recordings</b></h4>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Vin:
+      </div>
+      <div class="col-md-6">
+        {{readings.vin}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold" >
+        Last Recorded time:
+      </div>
+      <div class="col-md-6">
+        {{readings.timestamp | date}}
+      </div>
+    </div>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Latitude:
+      </div>
+      <div class="col-md-6">
+        {{readings.latitude}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Longitude:
+      </div>
+      <div class="col-md-6">
+        {{readings.longitude}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Engine Horse Power:
+      </div>
+      <div class="col-md-6">
+        {{readings.engineHp}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Engine RPM:
+      </div>
+      <div class="col-md-6">
+        {{readings.engineRpm}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Fuel Volume:
+      </div>
+      <div class="col-md-6">
+        {{readings.fuelVolume}}
+      </div>
+    </div>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Speed:
+      </div>
+      <div class="col-md-6">
+        {{readings.speed}}
+      </div>
+    </div>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Cruise Control Check:
+      </div>
+      <div class="col-md-6">
+        {{readings.cruiseControlOn}}
+      </div>
+    </div>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Engine Light On Check:
+      </div>
+      <div class="col-md-6">
+        {{readings.checkEngineLightOn}}
+      </div>
+    </div>
+
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Engine Coolant Low Check:
+      </div>
+      <div class="col-md-6">
+        {{readings.engineCoolantLow}}
+      </div>
+    </div>
+
+    <div class="row spacing">
+      <div class="col-md-6 font-bold">
+        Cruise Control Check:
+      </div>
+      <div class="col-md-6">
+        {{readings.cruiseControlOn}}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+    <!--row-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-box">
+          <h4 class="m-t-0 m-b-20 header-title"><b>Vehicle Tire pressure</b></h4>
+          <div class="row">
+            <div class="col">
+              <div class=" widget-bg-color-icon card-box">
+                <div class="bg-icon pull-left" [ngClass]="{'bg-icon-danger': readings.tire.frontLeft<30 || readings.tire.frontLeft >37, 'bg-icon-success': readings.tire.frontLeft>=30 && readings.tire.frontLeft <=37 }">
+                  <i class=" text-success"
+                     [ngClass]="{'ti-alert': readings.tire.frontLeft<30 || readings.tire.frontLeft >37, 'ti-support': readings.tire.frontLeft>=30 && readings.tire.frontLeft <=37 }"></i>
+                </div>
+                <div class="text-right">
+                  <h3 class="text-dark m-t-10"><b class="counter">{{readings.tire.frontLeft}}</b></h3>
+                  <p class="text-muted mb-0">Front Left Tire</p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="widget-bg-color-icon card-box bg-ico">
+                <div class="bg-icon pull-left"
+                     [ngClass]="{'bg-icon-danger': readings.tire.frontRight<30 || readings.tire.frontRight >37, 'bg-icon-success': readings.tire.frontRight>=30 && readings.tire.frontRight <=37  }">
+                  <i class=" text-success"
+                     [ngClass]="{'ti-alert': readings.tire.frontRight<30 || readings.tire.frontRight >37, 'ti-support': readings.tire.frontRight>=30 && readings.tire.frontRight <=37  }"></i>
+                </div>
+                <div class="text-right">
+                  <h3 class="text-dark m-t-10"><b class="counter">{{readings.tire.frontRight}}</b></h3>
+                  <p class="text-muted mb-0">Front Right Tire</p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="widget-bg-color-icon card-box">
+                <div class="bg-icon pull-left" [ngClass]="{'bg-icon-danger': readings.tire.rearLeft<30 || readings.tire.rearLeft >37, 'bg-icon-success': readings.tire.rearLeft>=30 && readings.tire.rearLeft <=37  }">
+                  <i class="text-success"
+                     [ngClass]="{'ti-alert': readings.tire.rearLeft<30 || readings.tire.rearLeft >37, 'ti-support': readings.tire.rearLeft>=30 && readings.tire.rearLeft <=37  }"></i>
+                </div>
+                <div class="text-right">
+                  <h3 class="text-dark m-t-10"><b class="counter">{{readings.tire.rearLeft}}</b></h3>
+                  <p class="text-muted mb-0">Rear Left Tire)</p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="widget-bg-color-icon card-box">
+                <div class="bg-icon pull-left"[ngClass]="{'bg-icon-danger': readings.tire.rearRigth<30 || readings.tire.rearRigth >37, 'bg-icon-success': readings.tire.rearRigth>=30 && readings.tire.rearRigth <=37 }">
+                  <i class=" text-success"
+                     [ngClass]="{'ti-alert': readings.tire.rearRigth<30 || readings.tire.rearRigth >37, 'ti-support': readings.tire.rearRigth>=30 && readings.tire.rearRigth <=37 }"></i>
+                </div>
+                <div class="text-right">
+                  <h3 class="text-dark m-t-10"><b class="counter">{{readings.tire.rearRigth}}</b></h3>
+                  <p class="text-muted mb-0">Rear Right Tire</p>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--row ends-->
+
+    <!--row starts-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-box">
+          <h4 class="m-t-0 m-b-20 header-title"><b>Vehicle Historic alerts</b></h4>
+            <app-report [vin]="readings.vin"></app-report>
+        </div>
+      </div>
+    </div>
+          <!--row ends-->
+  </div>
+</div>

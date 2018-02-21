@@ -1,0 +1,37 @@
+<!-- Navigation Bar-->
+<header id="topnav">
+  <div class="topbar-main">
+    <div class="container-fluid">
+
+      <!-- Logo container-->
+      <div class="logo">
+        <!-- Text Logo -->
+        <a [routerLink]="['/home']" class="logo">
+          <span class="logo-small"><i class="mdi mdi-radar"></i></span>
+          <span class="logo-large"><i class="mdi mdi-radar"></i> TrackMyVehicle</span>
+        </a>
+      </div>
+      <!-- End Logo container-->
+
+
+      <div class="clearfix"></div>
+
+    </div> <!-- end container -->
+  </div>
+  <!-- end topbar-main -->
+
+  <div class="navbar-custom">
+    <div class="container-fluid">
+      <div id="navigation">
+        <!-- Navigation Menu-->
+        <ul class="navigation-menu">
+          <li class="has-submenu">
+            <a [routerLink]="['/home']"><i class="ti-home"></i>Home</a>
+          </li>
+        </ul>
+        <!-- End navigation menu -->
+      </div> <!-- end #navigation -->
+    </div> <!-- end container -->
+  </div> <!-- end navbar-custom -->
+</header>
+<!-- End Navigation Bar-->

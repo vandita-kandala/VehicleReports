@@ -1,0 +1,35 @@
+<div class="wrapper animated zoomIn">
+  <div class="container-fluid">
+    '
+
+    <!--row starts-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-box">
+          <h4 class="m-t-0 m-b-20 header-title"><b>All recoded High Alerts</b></h4>
+
+          <div class="table-responsive">
+            <table class="table table-hover m-b-0">
+              <thead>
+              <tr>
+                <th>Vin</th>
+                <th>Message</th>
+                <th (click)="onclicktime()">Time <span>(click to sort)</span></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr  *ngFor="let priority of allPriorities">
+                <td>{{priority.vin}}</td>
+                <td>{{priority.message}}</td>
+                <td>{{priority.timestamp | date}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--row ends-->
+  </div>
+</div>
